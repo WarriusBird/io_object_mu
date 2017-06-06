@@ -72,17 +72,11 @@ class ConfigNode:
             cfg_error(script, "unexpected end of file")
     @classmethod
     def load(cls, text):
-        script = Script("", text, "{}=", False)
+        script = Script("", text, "{}=")
         script.error = cfg_error.__get__(script, Script)
-        nodes = []
-        while script.tokenAvailable(True):
-            node = ConfigNode()
-            ConfigNode.ParseNode(node, script, True)
-            nodes.append(node)
-        if len(nodes) == 1:
-            return nodes[0]
-        else:
-            return nodes
+        node = ConfigNode()
+        ConfigNode.ParseNode(node, script, True)
+        return node
     def GetNode(self, key):
         for n in self.nodes:
             if n[0] == key:

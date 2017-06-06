@@ -25,13 +25,10 @@ class ScriptError(Exception):
         self.line = line
 
 class Script:
-    def __init__(self, filename, text, single="{}()':", quotes=True):
+    def __init__(self, filename, text, single="{}()':"):
         self.filename = filename
-        if text[0:3] == "\xef\xbb\xbf":
-            text = text[3:]
         self.text = text
         self.single = single
-        self.quotes = quotes
         self.pos = 0
         self.line = 1
         self.unget = False
@@ -90,7 +87,7 @@ class Script:
             if not crossline:
                 self.error("line is incomplete")
             return None
-        if self.quotes and self.text[self.pos] == "\"":
+        if self.text[self.pos] == "\"":
             self.pos += 1
             start = self.pos
             if self.text[self.pos] == len(self.text):

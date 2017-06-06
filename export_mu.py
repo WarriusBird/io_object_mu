@@ -459,8 +459,7 @@ def generate_cfg(mu, filepath):
         for n in mu.nodes:
             part.AddValue(n.name, n.cfgstring())
         of = open(cfg, "wt")
-        for n in node.nodes:
-            of.write(n[0] + " " + n[1].ToString())
+        of.write("PART " + part.ToString())
 
 def export_object(obj, filepath):
     animations = collect_animations(obj)

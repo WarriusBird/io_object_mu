@@ -34,7 +34,7 @@ model_by_path = {}
 loaded_models = {}
 parts = {}
 resources = {}
-gamedata = "/home/bill/ksp/KSP_linux/GameData"
+gamedata = r"E:\Steam\steamapps\common\Kerbal Space Program\GameData"#"/home/bill/ksp/KSP_linux-ckan/GameData"
 loaded_models_object = None
 parts_object = None
 
